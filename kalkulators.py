@@ -45,13 +45,19 @@ def btnCommand(command):
     e.delete(0,END)
     return 0
 
+def Clear():
+    e.delete(0,END)
+    num1 = 0
+    mathOp=""
+    return 0
+
     
 
 e=Entry(Kalk, width=15, bd=20, font=("Arial Black",20), bg="pink")
 e.grid(row=0, column=0, columnspan=4)
 
 
-btnC=Button(Kalk, text="C",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink")
+btnC=Button(Kalk, text="C",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink",command=Clear)
 btnC.grid(row=1, column=0)
 btnC.config(width=2, height=1)
 
