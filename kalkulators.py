@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
+from math import *
 
 Kalk=tk.Tk()
 Kalk.title("Kalkulators")
@@ -14,7 +15,39 @@ def btnClick(number):
     e.insert(0,nexNumber) # ievieto displejā
     return 0
 
-e=Entry(Kalk, width=15, bd=20, font=("Arial Black",20))
+def vienads():
+    global num2
+    num2=(float(e.get()))
+    result=0
+    if mathOp=="+":
+        result=num1+num2
+    elif mathOp=="-":
+        result=num1-num2
+    elif mathOp=="*":
+        result=num1*num2
+    elif mathOp=="÷":
+        result=num1/num2
+    elif mathOp=="÷":
+        result=num1/num2
+    else:
+        result=0
+    e.delete(0,END)
+    e.insert(0,str(result))
+    return 0
+
+def btnCommand(command):
+    global number
+    global mathOp
+    global num1
+    global num3
+    mathOp=command #+*/-
+    num1=(float(e.get()))
+    e.delete(0,END)
+    return 0
+
+    
+
+e=Entry(Kalk, width=15, bd=20, font=("Arial Black",20), bg="pink")
 e.grid(row=0, column=0, columnspan=4)
 
 
@@ -30,7 +63,7 @@ btnsakne=Button(Kalk, text="√x",padx="40", pady="20", bd=10,font=("Arial Black
 btnsakne.grid(row=1, column=2)
 btnsakne.config(width=2, height=1)
 
-btndalit=Button(Kalk, text="÷",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink")
+btndalit=Button(Kalk, text="÷",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink", command=lambda:btnCommand("÷"))
 btndalit.grid(row=1, column=3)
 
 btn7=Button(Kalk, text="7",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="pink", command=lambda:btnClick(7))
@@ -45,7 +78,7 @@ btn9=Button(Kalk, text="9",padx="40", pady="20", bd=10,font=("Arial Black",20), 
 btn9.grid(row=2, column=2)
 btn9.config(width=2, height=1)
 
-btnreiz=Button(Kalk, text="*",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink")
+btnreiz=Button(Kalk, text="*",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink", command=lambda:btnCommand("*"))
 btnreiz.grid(row=2, column=3)
 btnreiz.config(width=2, height=1)
 
@@ -61,7 +94,7 @@ btn6=Button(Kalk, text="6",padx="40", pady="20", bd=10,font=("Arial Black",20), 
 btn6.grid(row=3, column=2)
 btn6.config(width=2, height=1)
 
-btnminus=Button(Kalk, text="-",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink")
+btnminus=Button(Kalk, text="-",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink", command=lambda:btnCommand("-"))
 btnminus.grid(row=3, column=3)
 btnminus.config(width=2, height=1)
 
@@ -77,7 +110,7 @@ btn3=Button(Kalk, text="3",padx="40", pady="20", bd=10,font=("Arial Black",20), 
 btn3.grid(row=4, column=2)
 btn3.config(width=2, height=1)
 
-btnplus=Button(Kalk, text="+",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink")
+btnplus=Button(Kalk, text="+",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink", command=lambda:btnCommand("+"))
 btnplus.grid(row=4, column=3)
 btnplus.config(width=2, height=1)
 
@@ -93,7 +126,7 @@ btnlog=Button(Kalk, text="log",padx="40", pady="20", bd=10,font=("Arial Black",2
 btnlog.grid(row=5, column=2)
 btnlog.config(width=2, height=1)
 
-btnir=Button(Kalk, text="=",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink")
+btnir=Button(Kalk, text="=",padx="40", pady="20", bd=10,font=("Arial Black",20), bg="hot pink", command=vienads)
 btnir.grid(row=5, column=3)
 btnir.config(width=2, height=1)
 
